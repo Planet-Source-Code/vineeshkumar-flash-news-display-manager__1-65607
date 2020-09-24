@@ -1,0 +1,194 @@
+<html>
+     <body topmargin=0 leftmargin=0 onLoad="scroll_marq();toggle()" Scroll="No">
+	<title>DHTML Text effects</title>
+<font face='verdana'>
+<!-- here starts the illusions,plz make sure that ie6 is in use -->
+<!-- The time and date mother div tag -->
+<form name="form1">
+	<input type=hidden name='board1' onpropertychange="toggle_news()">
+	<input type=hidden name='board2' value="welcome to FIFA world cup 2006">
+	<input type=hidden name='board3' onpropertychange="change_scroll_news()" >
+	<input type=hidden name='board4' onpropertychange="set_effect()">
+	<input type=hidden name='board5' onpropertychange="bn_on_off()" value=1>
+</form>
+<DIV ID="divtimedate" STYLE="position:absolute; top: 2px; left: 2px; width:150px;height:30px;overflow:hidden;margin:0px; background:#EEEEEE;border:thin solid; border-width: 1px;filter:progid:DXImageTransform.Microsoft.Wipe(GradientSize=3.0, wipeStyle=0, motion='forward')">
+
+<DIV ID="divDate" STYLE="position:absolute; top:0px; left:0px; width:150px;height:30px; background:#B40000;font-size:20; text-align:center;color:white">
+Tuesday June 6
+</DIV>
+
+<DIV ID="divTime" STYLE="visibility:hidden;position:absolute; top:0px; left:0px; width:150px;height:30px; background:#B40000;font-size:20;text-align:center;color:white">
+11:39:00 AM
+</DIV>
+
+</div>
+<br><br>
+
+<!--sliding news>
+<DIV ID="divnews" STYLE="position:absolute; top: 2px; left: 152px; width:350px;height:30px;overflow:hidden;margin:0px; background:#EEEEEE;border:thin solid; border-width: 1px;filter:progid:DXImageTransform.Microsoft.Slide(slideStyle='push',bands=1">
+
+	<DIV ID="divnewsset1" STYLE="position:absolute; top: 0px; left: 0px; width:350px;height:30px; background:#EEEEEE;font-size:20; 	text-align:center;color:white">
+
+	<DIV ID="divTitle1" STYLE="position:absolute;top:0px;left:0px;width:100px;height:30px; background:#3366cc;font-size:20; 	text-align:center;color:white">
+	welcome
+	</DIV>
+
+	<DIV ID="divnews1" STYLE="position:absolute;top:0px;left:100px;width:250px;height:30px;background:#EEEEEE;font-size:20;text-align:center;color:black">
+	'press the shoot button'
+	</DIV>
+
+	</div>
+
+	<DIV ID="divnewsset2" STYLE="visibility:hidden;position:absolute; top: 0px; left: 0px; width:350px;height:30px; background:#EEEEEE;font-size:20;text-align:center;color:white">
+
+	<DIV ID="divTitle2" STYLE="position:absolute;top:0px;left:0px;width:100px;height:30px; background:#3366cc;font-size:20; 	text-align:center;color:white">
+	welcome
+	</DIV>
+
+	<DIV ID="divnews2" STYLE="position:absolute;top:0px;left:100px;width:250px;height:30px;background:#EEEEEE;font-size:20;text-align:center;color:black">
+	have a good day
+	</DIV>
+
+	</div>
+
+
+</DIV>
+<br><br>
+
+<DIV ID="divBase" STYLE="position:absolute; top: 30px; left: 2px; width:500px;height:63px;background:black">
+	<DIV ID="divBreak" STYLE="visibility:hidden;position:absolute;top:0px;left:100px; width:499px;height:63px;">
+	<img src="./bn.jpg">
+	</DIV>
+
+	<DIV ID="divNews" STYLE="visibility:hidden;position:absolute;top:0px;left:0px;width:499px;height:63px;background:gold;font-size:25;text-align:center;color:white+red">
+	<img src="./cup.gif"> welcome to FIFA world cup 2006
+	</DIV>
+</div>
+</font>
+
+
+<font color=white size=5>
+<b>
+<DIV ID="divbottom" STYLE="position:absolute; top:93px; left: 2px; width:500px;height:25px;background:#3366cc;overflow:hidden">
+
+	<nobr><div id="divMarq" style="position:absolute;top:0px;left:590px;height:25;background:#3366cc;overflow:hidden">
+	 FIFA commences on this friday..!!! hold your breaths...get ready for the whistle...!!!
+	</div>
+
+</DIV>
+</b>
+</font>
+
+<SCRIPT>
+var rot = 0;
+var rot_n = 0;
+var news_tog=0;
+var tn;
+var pos=593;
+function toggle()
+{
+    divtimedate.filters[0].Apply();
+    if (rot=='0')
+    { 
+	rot = 1;
+        divTime.style.visibility="visible"; 
+	divDate.style.visibility="hidden";
+    }
+    else
+    {  
+	rot = 0;
+        divTime.style.visibility="hidden"; 
+	divDate.style.visibility="visible";
+    }
+	gtime();
+    	divtimedate.filters[0].Play(duration=2);
+	t=setTimeout('toggle()',5000);
+}
+
+function gtime()
+{
+var d = Date()
+var ts = new Array()
+ts=d.split(" ")
+divDate.innerText=ts[0]+" "+ts[1]+" "+ts[2]
+divTime.innerText=ts[3].split(":")[0]+":"+ts[3].split(":")[1]
+}
+
+function toggle_news()
+{
+   var nn=new Array();
+   str=form1.board1.value;
+   nn=str.split("<v>")
+   divnews.filters[0].Apply();
+    if (news_tog=='0')
+    { 
+	news_tog = 1;
+        divTitle2.innerText=nn[0];
+        divnews2.innerText=nn[1];
+        divnewsset2.style.visibility="visible"; 
+	divnewsset1.style.visibility="hidden";
+    }
+    else
+    {  
+	news_tog = 0;
+        divTitle1.innerText=nn[0];
+        divnews1.innerText=nn[1];
+        divnewsset1.style.visibility="visible"; 
+	divnewsset2.style.visibility="hidden";
+    }
+	divnews.filters[0].Play(duration=1);	
+}
+
+function toggle_b_news()
+{
+    if (rot_n=='0')
+    { 
+	rot_n = 1;
+	divBase.style.filter = "progid:DXImageTransform.Microsoft.Wipe(GradientSize=.50, wipeStyle=0, motion='reverse')";
+	divBase.filters[0].Apply();
+        divNews.style.visibility="visible"; 
+	divBreak.style.visibility="hidden";
+    }
+    else
+    {  
+	rot_n = 0;
+	divBase.style.filter = "progid:DXImageTransform.Microsoft.Wipe(GradientSize=5.0, wipeStyle=0, motion='reverse')";
+	divBase.filters[0].Apply();
+        divNews.style.visibility="hidden"; 
+	divBreak.style.visibility="visible";
+    }
+    	divBase.filters[0].Play(duration=0.5);
+        divNews.innerHTML="<img src='./cup.gif'>"+form1.board2.value+"</DIV>"
+	tn=setTimeout('toggle_b_news()',2000);
+}
+function change_scroll_news()
+{
+	divbottom.innerHTML="<nobr><div id='divMarq' style='position:absolute;top:0px;left:593px;height:25;background:#3366cc;overflow:hidden'>"+form1.board3.value+"</div>"
+	pos=593
+
+}
+
+function set_effect()
+{
+	divnews.style.filter = "progid:DXImageTransform.Microsoft."+form1.board4.value+"";
+}
+function bn_on_off()
+{
+	if(form1.board5.value==1)
+		toggle_b_news()
+	else
+		clearTimeout(tn)
+}
+function scroll_marq()
+	{
+	var ln=divMarq.innerText.length*10
+	pos=pos-.5
+	if(pos<-ln)
+		pos=593
+	divMarq.style.left=pos+"px"
+	ts=setTimeout("scroll_marq()",1)
+	}
+</SCRIPT>
+
+</body>
+</html>
